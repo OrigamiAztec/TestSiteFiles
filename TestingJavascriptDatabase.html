@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style3.css">
+    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+    <title>Checkbox Input</title>
+  </head>
+  <body>
+    <section id="overlay">
+      <img src="file:///C:/Users/origa/Pictures/JPLSiteColorsImgs/TAM-Logo.png" alt="Davie's Burgers Logo" id="logo">
+      <hr>
+      <form>
+        <h1>Enter Info on Seminar:</h1>
+        <section class="name">
+          <label for="first_name">Enter first name: </label>
+    			<input type="text" name="first_name" id="first_name">
+        </section>
+        <hr>
+        <section class="name_2">
+          <label for="last_name">Enter second name: </label>
+          <input type="text" name="last_name" id="last_name">
+        </section>
+        <hr>
+        <section class="Number of seminars uploaded: ">
+          <label for="seminar_count">How many seminars are you uploading?</label>
+          <br>
+          <span>0</span>
+          <input type="range" name="seminar_count" id="seminar_count" value="3" min="1" max="5">
+          <span>4+</span>
+        </section>
+      </form>
+		
+		
+	<img src = "" id = "rocket" />
+		<script>
+			console.log("Fetching image");
+			fetch('C:\Users\origa\Pictures\TestSiteImages\SpaceX.jpg').then(response => {
+				console.log(response);
+				return response.blob();
+			});
+		</script>	
+    </section>
+  </body>
+</html>
