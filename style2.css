@@ -1,0 +1,221 @@
+body{
+	margin: 0;
+	background-image: linear-gradient(to right, gray, white);
+	padding: 0;
+    margin: 0;
+
+}
+#cover{
+	background: black;
+	position: abolute;
+	height: 10px;
+	margin-top: 80px;
+	width: 100%;
+	z-index:2;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0px solid #e7e7e7;
+  background-color: #333;
+  position:relative;
+  margin-top:0px;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 74px;
+  text-decoration:underline;
+}
+
+li a:hover:not(.active) {
+  background-color: black;
+}
+
+
+#topbanner{
+    display: inline-block;
+	background-image: linear-gradient(rgba(80,0,0,1.00), black);
+	height: 86px;
+	width: 100%;
+	
+}
+
+#TAMULogoWhite{
+	height: 87px;
+	width: auto;
+	float:left;
+	padding-left: 35%;
+}
+
+#AndLogo{
+	float: left;
+	color: white;
+	padding-top:0;
+	font-size: 30px;
+	padding-left: 20px;
+}
+
+#JPLLogo{
+	height: 60px;
+	width: auto;
+	float: left;
+	padding-left: 30px;
+	padding-top: 13px;
+}
+
+
+#ResearchPics{
+	background: linear-gradient(to right, rgba(80,0,0,1.00), black);
+	border-radius: 30px;
+	border: 5px solid black;
+	margin-top: 50px;
+	margin-left: 30%;
+	display: block;
+	height: 500px;
+	width: 380px;
+}
+
+#ResearchPics p{
+	color: white;
+	margin-top: 0px;
+	font-size: 20px;
+	maring-bottom: 0px;
+	display:block;
+	/*border: 4px solid black;*/
+	padding-left: 77px;
+	padding-top: 0px;
+	padding-right: 76px;
+	left: 2%;
+    border-top-left-radius: 175px;
+	border-top-right-radius: 175px;
+	position: absolute;
+}
+
+#ResearchPics div{
+	margin-top: 59px;
+	margin-left: 25px;
+	height: 93px;
+	width: 93px;
+	display: inline-block;
+	overflow: hidden;
+	border-radius: 60px;
+	background: rgba(105,65,66,1.00);
+	
+}
+
+#ResearchPics div img{
+	position: relative;
+	padding-left: 4px;
+}
+
+#Researchers_and_relavent_seminars{
+	display: inline-block;
+	width: 100px;
+}
+
+#relavent_seminars{
+	display: flex;
+	flex-direction: column;
+	background-image:  linear-gradient(to right, rgba(80,0,0,1.00), black);
+	border-radius: 20px;
+	margin-top: 51px;
+	height: 500px;
+	width: 60%;
+	float:right;
+	margin-right: 5%;;
+	border: 2px solid white;
+}
+
+#Title_of_seminar{
+	display: flex;
+	background: white;
+	height: 40px;
+	padding-left: 35%;
+	padding-top: 0px;
+	padding-bottom: 20px;
+	border: 3px solid gray;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+#Title_of_seminar p{
+	border: 2px solid red;
+	font-size: 30px;
+}
+
+#vid_1{
+	border: 0px solid white;
+	border-radius: 12px;
+	margin-top: 3%;
+	margin-left: 3%;
+	width: 53%;
+	height: 340px;
+}
+
+#seminar_description{
+	border-bottom-left-radius: 13px;
+	border-top-left-radius: 13px;
+	margin-top: 20px;
+	float: right;
+	position:relative;
+	background: white;
+	display: flex;
+	flex-direction: column;
+	height: 350px;
+	width: 270px;
+	border-right: 2px solid black;
+}
+
+h4{
+	margin-left: 120px;
+	display: inline;
+	syle: underline;
+}
+
+#twitter_div{
+	margin-top: 30px;
+	display: inline-block;
+	position: relative;
+	margin-left: 44%;
+}
+
+#twitter_div2{
+	display: inline-block;
+	margin-left: 1%;
+}
+
+#summary{
+	margin-left: 7px;
+	float: right;
+	overflow: auto;
+}
+
+.tab { 
+	text-indent:40px 
+}
+
+#top_twitter_post{
+	position:absolute;
+	display: flex;
+	margin-top: 70px;
+	height: 0px;
+	margin-left: 20px;
+}
+
+#top_twitter_post2{
+	position:absolute;
+	display: flex;
+	margin-top: 20px;
+	height: 0px;
+	margin-left: 270px;
+}
