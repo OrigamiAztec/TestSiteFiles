@@ -20,7 +20,7 @@ body {
 #left_logo{ 
 	position: absolute;
 	display: block;
-	margin-left: 33%;
+	margin-left: 31%;
 	margin-top: 12%;
 }
 
@@ -38,7 +38,8 @@ body {
 	display: block;
 	margin-left: 50%;
 	margin-top: 14%;
-	font-size: 1.6em;
+	font-size: 1.8em;
+	font-weight: 400;
 }
 
 .roasting h4:hover:not(.active){
