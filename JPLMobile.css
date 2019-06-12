@@ -15,29 +15,28 @@ body {
   background-image: url(https://www.extremetech.com/wp-content/uploads/2019/01/curiosity-640x353.jpg);
   height: 400px;
   background-position: center center;
+  display: flex;
+  flex-direction: row;
 }
 
 #left_logo{ 
-	position: absolute;
-	display: block;
-	margin-left: 31%;
+	position: relative;
+	margin-left: 34%;
 	margin-top: 12%;
 }
 
 #right_logo{
-	position: absolute;
-	display: block;
-	margin-left: 58%;
 	margin-top: 8%;
+	position: relative;
+	margin-left: 2%;
 }
 
 
 #mid_logo p{
 	color: white;
-	position: absolute;
-	display: block;
-	margin-left: 50%;
-	margin-top: 14%;
+	margin-top: 330%;
+	margin-left: 29%;
+	position: relative;
 	font-size: 1.8em;
 	font-weight: 400;
 }
