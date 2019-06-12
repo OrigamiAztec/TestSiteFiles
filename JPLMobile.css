@@ -149,7 +149,7 @@ h4 {
   font-family: 'Raleway', sans-serif;
   font-size: 28px;
   font-weight: 700;
-  line-height: .2em;
+  line-height: 1em;
 }
 
 h5 {
@@ -355,7 +355,8 @@ ul{
 }
 
 ul h2{
-	margin-left: auto;
+	margin: auto;
+	padding: 1.5% 0 1.5% 0;
 }
 
 .nav_container a:hover:not(.active){
