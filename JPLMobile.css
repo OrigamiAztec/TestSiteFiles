@@ -344,3 +344,24 @@ a {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 2em;
 }
+
+.nav_container a{
+	color: white;
+}
+
+ul{
+	display: flex;
+	flex-direction: row;
+}
+
+ul h2{
+	margin-left: 9%;
+}
+
+.nav_container a:hover:not(.active){
+  color:black;
+}
+
+.nav_container{
+	background: linear-gradient(gray, rgba(214,201,182,1.00));
+}
