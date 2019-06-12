@@ -20,14 +20,14 @@ body {
 #left_logo{ 
 	position: absolute;
 	display: block;
-	margin-left: 33%;
+	margin-left: 30%;
 	margin-top: 12%;
 }
 
 #right_logo{
 	position: absolute;
 	display: block;
-	margin-left: 53%;
+	margin-left: 58%;
 	margin-top: 8%;
 }
 
@@ -38,6 +38,7 @@ body {
 	display: block;
 	margin-left: 50%;
 	margin-top: 14%;
+	font-size: 1.6em;
 }
 
 .roasting h4:hover:not(.active){
@@ -149,7 +150,7 @@ h4 {
   font-family: 'Raleway', sans-serif;
   font-size: 28px;
   font-weight: 700;
-  line-height: 1em;
+  line-height: 2em;
 }
 
 h5 {
@@ -227,6 +228,7 @@ a {
     font-family: 'Karla', sans-serif;
 	font-weight: 700;
 	letter-spacing: .1em;
+	line-height: 1em;
 }
 
 #testing_color .three{
