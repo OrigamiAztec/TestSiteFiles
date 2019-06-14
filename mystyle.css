@@ -1,0 +1,26 @@
+@charset "utf-8";
+/* CSS Document */
+
+#link{
+	position: relative;
+	margin-left: 20%;
+	margin-right: 20%;
+    width: auto;
+    height: auto;
+	border: 10px solid hsla(359,55%,55%,.7);
+	border-radius: 5px;
+	padding-bottom: 1%;
+	padding-top: 1%;
+	background: linear-gradient(to right, white, grey);
+}
+
+p{
+	display: inline-block;
+	margin-left: 40%;
+}
+
+a{
+	color: black;
+	padding-left: 5%;
+}
+
