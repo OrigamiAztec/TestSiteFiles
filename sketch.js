@@ -34,7 +34,8 @@ async function graphData(){
 				datasets: [{
 					label: 'Combined Land-Surface Air and Sea-Surface Water Temperature (F)',
 					data: meantemparray,
-					borderColor: 'black',
+					backgroundColor: 'white',
+					borderColor: 'hsla(250,19%,57%,.9)',
 					borderWidth: 2
 				}]
 			},
