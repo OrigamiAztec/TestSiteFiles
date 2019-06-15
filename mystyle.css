@@ -12,15 +12,35 @@
 	padding-bottom: 1%;
 	padding-top: 1%;
 	background: linear-gradient(to right, white, grey);
+	display: flex;
+  	flex-direction: row;
+  	justify-content: center;
 }
 
 p{
-	display: inline-block;
-	margin-left: 40%;
+	position:relative;
+	display: flex;
+  	flex-direction: row;
+  	justify-content: center;
 }
 
 a{
+	position: relative;
 	color: black;
-	padding-left: 5%;
 }
 
+h4{
+	position:relative;
+	display: flex;
+  	flex-direction: row;
+	justify-content: center;
+}
+
+.ISS_pos{
+	width: auto;
+	position: relative;
+	display: flex;
+	justify-content: center;
+}
+.ISS_pos p{
+}
