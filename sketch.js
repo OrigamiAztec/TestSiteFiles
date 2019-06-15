@@ -55,4 +55,17 @@ async function graphData(){
 		});
 }
 
-
+		
+		const api_url = 'https://api.wheretheiss.at/v1/satellites/25544'
+		async function getISS(){
+			const response = await fetch(api_url);
+			const data = await response.json();
+			const {latitude, longitude, altitude, velocity} = data;
+			
+			document.getElementById('lat').textContent = latitude;
+			document.getElementById('long').textContent = longitude;
+			document.getElementById('alt').textContent = altitude;
+			document.getElementById('vel').textContent = velocity;
+			
+			
+		}
