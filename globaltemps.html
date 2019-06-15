@@ -23,14 +23,36 @@
 	<canvas id = 'myChart' width = "600" height = "200"></canvas>
 	<p>Link to data from NASA Goddard Space Center:</p>
 	<div id = "link">
-		 <a href = "https://data.giss.nasa.gov/gistemp/graphs/graph_data/Global_Mean_Estimates_based_on_Land_and_Ocean_Data/graph.txt">https://data.giss.nasa.gov/gistemp/graphs/graph_data/Global_Mean_Estimates_based_on_Land_and_Ocean_Data/graph.txt</a>
+		 <a href = "https://data.giss.nasa.gov/gistemp/graphs/graph_data/Global_Mean_Estimates_based_on_Land_and_Ocean_Data/graph.txt">NASA Goddard Data</a>
 	</div>
+
+	<h4>ISS Location: <h4>
+	<div class = 'ISS_pos'>
+	<p>
+		Latitude : <span id = "lat"></span>
+	</p>
+		<p>,  <br></p>
+	<p>	
+		Longitude : <span id = "long"></span>
+	</p>
+		<p>, <br></p>
+	<p>	
+		Altitude (km) : <span id = "alt"></span>
+	</p>
+		<p>, <br></p>
+	<p>
+		Velocity (km/s) : <span id = "vel"></span>
+	</p>
+		</div>
+		
 	<script>
 		const xlabels = [];
 		const meantemparray = [];
-		
 		graphData();
-		
+
+
+		getISS();
+
 	</script>
 	
 	
