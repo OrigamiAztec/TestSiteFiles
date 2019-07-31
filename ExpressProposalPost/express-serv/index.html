@@ -1,0 +1,239 @@
+<html>
+<body>    
+        
+        <!--P5 library import-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!--Links to stylesheet for CSS-->
+        <link rel="stylesheet" type="text/css" href="express_input.css">
+        
+        <!--Nice fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Literata&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+
+  <!-- overlay creates area for all form info -->
+  <section class="overlay">
+        <h1>A&M - JPL Research Live</h1>
+  <!-- First name, last name, email, summary of research, relavent links, relavent majors that should apply -->
+  <!--<p id = "post_title">Post update for proposal</p>-->
+  <p id = "loading_title">Thank you for submitting your information, an email should be sent to you soon for validation</p>
+  <form>
+<!-- Enter who will see post -->
+<div id = "audience">
+                <div><label id = "labels">Proposal For: </label></div>
+                <br>
+                <div class="container">
+                                <input id="toggle1" type="checkbox" class = "putter">
+                                <label for="toggle1" class = "checker one">Undergraduate Students</label>
+                              
+                                <input id="toggle2" type="checkbox" class = "putter">
+                                <label for="toggle2" class = "checker two">Graduate Students</label>
+                              
+                                <input id="toggle3" type="checkbox" class = "putter">
+                                <label for="toggle3" class = "checker three">Faculty</label>
+                </div>    
+</div>
+
+<!-- Enter ID given by website -->
+<label id = "labels" for="id">ID:</label>
+   <br>
+           <input id="ID" name="ID" type="number"  minlength="1" maxlength="10">
+   <br>
+
+<!-- Enter first name for research contact -->
+<label id = "labels" for="First_name">First Name:</label>
+   <br>
+           <input id="First_name" name="first_name" type="text"  minlength="2" maxlength="20">
+   <br>
+
+<!-- Enter last name for research contact -->
+<label id = "labels" for="Last_name">Last Name:</label>
+    <br>
+            <input id="Last_name" name="last_name" type="text"  minlength="2" maxlength="20">
+    <br>
+
+<!-- Enter email for research contact -->
+<label id = "labels" for = "Email">JPL or TAMU Email:</label>
+    <br>
+            <input id="Email" name="email" type="email"  minlength="3" maxlength="30">
+    <br>
+
+<!-- Enter summary of research / proposal for research contact -->
+<label id = "labels" for = "research_summary">Summary of Research / Proposal</label>
+        <br>
+                <textarea id="Summary" name="research_summary" type="text"  minlength="10" maxlength="400"></textarea>
+        <br>
+
+<!-- Enter links for research / proposal for research contact -->
+<label id = "labels" for = "links">Relevant links (seperate links by commas)</label>
+        <br>
+                <textarea id="links" name="links" type="text"  minlength="10" maxlength="400"></textarea>
+        <br>
+
+
+
+    <!--Submission button -->
+    <!--<button id = "submit" onclick = submitWord() type = "button">Submit Information</button>  -->
+    <button id = "submit" type = "button">Submit Information</button> 
+
+</form>
+
+  <div class = "loading_glass">
+                <img src = "https://loading.io/spinners/hourglass/lg.sandglass-time-loading-gif.gif"/>
+        </div>
+   <p class = "complete_notice">Submitted Proposal and Information</p>
+ </section> 
+  
+
+   <fieldset class = "load_research_posts">
+        <legend>Information Pending Upload:</legend>
+        <h4>Email: </h4>
+        <p id = "uploaded_email"></p>
+        <h4>First Name: </h4>
+        <p id = "uploaded_first_name"></p>
+        <h4>Last Name: </h4>
+        <p id = "uploaded_last_name"></p>
+        <h4>Summary: </h4>
+        <p id = "uploaded_summary"></p>
+        <h4>Submitted at: </h4>
+        <p id = "uploaded_time"></p>
+
+       
+       
+   </fieldset>
+
+</body>
+        <script>
+        function setup(){
+                loadJSON('/all', gotData);
+                //console.log("running");   
+            }
+            
+        function finishedNotice(data){
+                console.log(data);
+            }
+
+        function gotData(data){
+                //console.log(data);   
+                var keys = Object.keys(data);            
+                //console.log(keys) 
+            }
+
+        function checkEmpty(){
+                if (select('#ID').value().length == 0  || select('#Last_name').value().length == 0 || select('#First_name').value().length == 0 || select('#Email').value().length == 0 || select('#Summary').value().length == 0){
+                        submitButton.style.display = 'none';
+                        //console.log("still empty");
+                }else{
+                        submitButton.style.display = '';
+                        //console.log("not empty")
+                }        
+            }
+
+        const form = document.querySelector('form');
+        const loadingElement = document.querySelector('.loading_glass');
+        const loadPosts = document.querySelector('.load_research_posts');
+        const complete_notice = document.querySelector('.complete_notice');
+        const submitButton = document.querySelector('#submit');
+        const overlaySect = document.querySelector('.overlay');
+        const fileURL = "http://localhost:5000/all";
+        submitButton.style.display = 'none';
+        loadingElement.style.display = 'none'; 
+        loading_title.style.display = 'none';
+        complete_notice.style.display = 'none';
+        loadPosts.style.display = 'none';
+        
+        setInterval(checkEmpty, 1000);
+            
+        
+        document.getElementById("submit").addEventListener("click", function(){
+                
+                function submitWord(){
+                    var id = select('#ID').value();
+                    console.log(`ID given is: ${id}`);
+                    var email = select('#Email').value();
+                    console.log(`Email input is: ${email}`);
+                    var first_name = select('#First_name').value();
+                    console.log(`First name input is: ${first_name}`);
+                    var last_name = select('#Last_name').value();
+                    console.log(`last name input is: ${last_name}`);
+                    var summary = select('#Summary').value();
+                    console.log(`summary input is: ${summary}`);
+                    var date = new Date();
+                    console.log(`new date is: ${date}`);
+                    console.log(date);
+                    console.log("Date data type is: ");
+                    console.log(typeof(date));
+                    var undergrad_select = document.getElementById("toggle1").checked;
+                    console.log(typeof(undergrad_select));
+                    var grad_select = document.getElementById("toggle2").checked;
+                    console.log(document.getElementById("toggle2").checked  ? 1 : 0);
+                    var faculty_select = document.getElementById("toggle3").checked;
+                    console.log(document.getElementById("toggle3").checked  ? 1 : 0);
+                    loadJSON('http://localhost:5000/add/' + id + '/' + email + '/' + first_name + '/' + last_name + '/' + summary + '/' + date + '/' + undergrad_select + '/' + grad_select + '/' + faculty_select, finishedNotice);
+                    listMostRecentPost(id, date);
+                    console.log("now trying to post update of most recent post");
+                }
+                submitWord();
+                setTimeout(showstuff, 3000);
+                
+                loadingElement.style.display = '';
+                loading_title.style.display = '';
+                form.style.display = 'none';
+                //post_title.style.display = 'none';
+                loadPosts.style.display = 'none';
+
+                //console.log("submitted input and it should be loading now");
+                function showstuff(){
+                        loadingElement.style.display = 'none';
+                        loading_title.style.display = 'none';
+                        complete_notice.style.display = '';
+                        loadPosts.style.display = '';
+                        //console.log("Show it all");
+                        overlaySect.style.display = 'none';
+                }
+        });
+
+        function listMostRecentPost(id, submittedDate){
+                fetch(fileURL)
+                        .then(response => response.json())
+                        .then(fileData => {
+                                //console.log(fileData);
+                                //console.log("ran file function");
+                                //console.log(typeof fileData);
+                                
+                                        console.log(Object.values(fileData)[0].length);
+                                        const div = document.createElement('div');
+                                        const pastpara = document.getElementById('uploaded_email');
+                                        const past_first_name = document.getElementById('uploaded_first_name');
+                                        const past_last_name = document.getElementById('uploaded_last_name');
+                                        const past_summary = document.getElementById('uploaded_summary');
+                                        const contents = document.createElement('p');
+                                        const first_name_p = document.createElement('p');
+                                        const last_name_p = document.createElement('p');
+                                        const summary_p = document.createElement('p');
+                                        const date = document.createElement('p');
+                                        date.textContent = submittedDate;
+        
+                                       
+                                        first_name_p.textContent = Object.values(fileData)[0][parseInt(id)-1]['first_name'];
+                                        last_name_p.textContent = Object.values(fileData)[0][parseInt(id)-1]['last_name'];
+                                        summary_p.textContent = Object.values(fileData)[0][parseInt(id)-1]['summary'];
+                                        contents.textContent = Object.values(fileData)[0][parseInt(id)-1]['email'];
+                                        //console.log(Object.values(fileData)[0][parseInt(id)-1]['summary']);
+                                        past_first_name.appendChild(first_name_p);
+                                        past_last_name.appendChild(last_name_p);
+                                        past_summary.appendChild(summary_p);
+                                        pastpara.appendChild(contents);
+                                        div.appendChild(date);
+
+                                        loadPosts.appendChild(div);
+
+                                
+                        });
+        }
+
+        </script>    
+</html>
