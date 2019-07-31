@@ -31,7 +31,7 @@ app.use(express.static('express_serv'));
 app.use(express.static('organized_student_viewer'));
 //console.log("Restarted Web Server");
 
-app.get('https://origamiaztec.github.io/TestSiteFiles/ExpressProposalPost/express-serv/add/:id/:email/:first_name/:last_name/:summary/:date/:undergrad_select/:grad_select/:faculty_select', addWord);
+app.get('/add/:id/:email/:first_name/:last_name/:summary/:date/:undergrad_select/:grad_select/:faculty_select', addWord);
 
 function addWord(request, response){
     var data = request.params;
