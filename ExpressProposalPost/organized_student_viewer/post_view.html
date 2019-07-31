@@ -1,0 +1,190 @@
+<html>
+<body>
+    <header>
+        <title>Organized Proposal Posts</title>
+        <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+          <!--P5 library import-->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+          <!--Links to stylesheet for CSS-->
+          <link rel="stylesheet" type="text/css" href="viewingposts_style.css">
+          
+          <!--Nice fonts-->
+          <link href="https://fonts.googleapis.com/css?family=Literata&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    </header>
+
+    <a href = "http://localhost:5000/post_view.html">
+    <div class = "back_button">
+        <div class = "div_one"><img src = "https://image.flaticon.com/icons/png/512/0/340.png" height = "80%"></div>
+        <div class = "div_two"><p>Home</p></div>
+    </div>
+    </a>
+    <section class="overlay">
+        
+               <section class = "audience_select">
+                   <h1>Search Through Proposals For:</h1>
+                    <div id = "one"><p>Undergraduate Student Proposals</p></div>
+                    <div id = "two"><p>Graduate Student Proposals</p></div>
+                    <div id = "three"><p>Faculty</p></div>
+                </section>
+    </section>
+    
+</body>
+
+<script>
+        const fileURL = "http://localhost:5000/all";
+        //const post_sect = document.querySelector('.load_research_posts');
+        const audience_select_sect = document.querySelector('.audience_select');
+        const mewsElement = document.querySelector('.overlay');
+        const back_section = document.querySelector('.back_button');
+
+        back_section.style.display = 'none';
+            
+        document.getElementById("one").addEventListener("click", function(){
+                
+                function submitWord(){
+                  
+                    console.log("clicked undergraduate students");
+                }
+
+                submitWord();
+                //var date = new Date();
+                //listMostRecentPost(3);
+                //listMostRecentPost(4);
+                layoutUndergrad();
+                audience_select_sect.style.display = 'none';
+                back_section.style.display = '';
+                //post_sect.style.display = '';
+                
+                
+        });
+        
+        document.getElementById("two").addEventListener("click", function(){
+                
+                function submitWord(){
+                  
+                    console.log("clicked graduate students");
+                }
+
+                submitWord();
+                audience_select_sect.style.display = 'none';
+                layoutGrad();
+                back_section.style.display = '';
+                //post_sect.style.display = '';
+        });
+
+        document.getElementById("three").addEventListener("click", function(){
+                
+                function submitWord(){
+                  
+                    console.log("clicked faculty");
+                }
+
+                submitWord();
+                audience_select_sect.style.display = 'none';
+                layoutFaculty();
+                back_section.style.display = '';
+
+                //post_sect.style.display = '';
+                
+        });
+
+        function layoutUndergrad(){
+                fetch(fileURL)
+                        .then(response => response.json())
+                        .then(fileData => {
+                                for (i = Object.values(fileData)[0].length; i > 0; i--) {
+                                       listMostRecentPost(i, 'undergrad_select'); 
+                                       console.log(i);
+                                };
+                                
+                        });
+        }
+
+        function layoutGrad(){
+                fetch(fileURL)
+                        .then(response => response.json())
+                        .then(fileData => {
+                                for (i = Object.values(fileData)[0].length; i > 0; i--) {
+                                       listMostRecentPost(i, 'grad_select'); 
+                                       console.log(i);
+                                };
+                                
+                        });
+        }
+
+        function layoutFaculty(){
+                fetch(fileURL)
+                        .then(response => response.json())
+                        .then(fileData => {
+                                for (i = Object.values(fileData)[0].length; i > 0; i--) {
+                                       listMostRecentPost(i, 'faculty_select'); 
+                                       console.log(i);
+                                };
+                                
+                        });
+        }
+        function listMostRecentPost(id, category){
+                fetch(fileURL)
+                        .then(response => response.json())
+                        .then(fileData => {
+                                        if(Object.values(fileData)[0][id-1][category] == "true"){
+                                        
+                                                const leg = document.createElement('legend');
+                                                leg.textContent = "Post";
+
+                                                const fieldset = document.createElement('fieldset');
+                                                fieldset.setAttribute("class", "load_research_posts");
+
+                                                const first_name = document.createElement('p');
+                                                const first_name_title = document.createElement('h4');
+                                                first_name_title.textContent = "First Name:";
+                                                first_name.textContent = Object.values(fileData)[0][parseInt(id)-1]['first_name'];
+                                                
+                                                const last_name = document.createElement('p'); 
+                                                const last_name_title = document.createElement('h4');
+                                                last_name_title.textContent = "Last Name";
+                                                last_name.textContent = Object.values(fileData)[0][parseInt(id)-1]['last_name'];
+
+                                                const email = document.createElement('p');
+                                                const email_title = document.createElement('h4');
+                                                email_title.textContent = "Email: ";
+                                                email.textContent = Object.values(fileData)[0][parseInt(id)-1]['email'];
+
+                                                const summary = document.createElement('p');
+                                                const summary_title = document.createElement('h4');
+                                                summary_title.textContent = "Proposal Summary: ";
+                                                summary.textContent = Object.values(fileData)[0][parseInt(id)-1]['summary'];
+
+                                                const date_updated = document.createElement('p');
+                                                const date_updated_title = document.createElement('h4');
+                                                date_updated_title.textContent = "Date posted: ";
+                                                date_updated.textContent = `${Object.values(fileData)[0][parseInt(id)-1]['date'].substr(0, 10)}`;
+
+                                                fieldset.appendChild(leg);
+                                                fieldset.appendChild(first_name_title);
+                                                fieldset.appendChild(first_name);
+                                                fieldset.appendChild(last_name_title);
+                                                fieldset.appendChild(last_name);
+                                                fieldset.appendChild(email_title);
+                                                fieldset.appendChild(email);
+                                                fieldset.appendChild(summary_title);
+                                                fieldset.appendChild(summary);
+                                                fieldset.appendChild(date_updated_title)
+                                                fieldset.appendChild(date_updated);
+                                                mewsElement.appendChild(fieldset);
+                                }else{
+                                        
+                                }
+                                
+                        });
+        }
+
+</script>    
+</html>
