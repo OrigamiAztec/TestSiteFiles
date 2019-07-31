@@ -1,0 +1,171 @@
+html{
+  min-height: 100%;
+
+}
+body {
+    background: linear-gradient(.6turn, #500000, white);
+    color:black;
+    font-family: "Fjalla One", Arial;
+  }
+  
+form {
+    line-height: 35px;
+  }
+  
+h1 {
+    font-size: 3em;
+    overflow: break;
+    font-family: 'Roboto';
+  }
+  
+.overlay {
+    margin-left: auto;
+    margin-right:auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 60%;
+    display: block;
+    padding: 0%;
+    height: 140vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgb(184, 169, 169);
+    border-radius: 12px;
+    text-align: center;
+  }
+  
+textarea{
+  border-radius: 5px;
+}
+#submit{
+    margin-top: 10%;
+    border-radius: 10px;
+    border: 2px solid black;
+    outline: none;
+}
+
+#submit:hover { 
+  background-color: hsla(3, 100%, 76%, 1);
+  font-weight: bold;
+}
+
+#submit p{
+    font-family: 'Raleway', sans-serif;
+    
+}
+  
+input{
+    height: 6%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 50%;
+    text-align: center;
+  }
+  
+#labels{
+      font-family: 'Raleway', sans-serif;
+      
+  }
+
+#Summary{
+  height: 15%;
+  width: 50%;
+  font-family: 'Raleway', sans-serif;
+
+}
+
+#links{
+  width: 50%;
+  height: 10%;
+  font-family: 'Raleway', sans-serif;
+}
+  
+.loading_glass{
+    margin-top: 2%;
+    align-content: center;
+  }
+  
+.loading_glass img{
+    height: 10%;
+  }
+
+#submit{
+    margin-top: 2%;
+}
+
+.complete_notice{
+  font-family: 'Roboto', sans-serif;
+}
+
+fieldset{
+  position:relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  z-index: 1;
+  width: 90%;
+  background-color: white;
+}
+
+legend{
+  font-weight: bold;
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans);
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.container {
+  position: relative;
+  margin-top: 1%;
+  left: 50%;
+  transform: translate(-50%, -50%);  
+}
+
+.putter {
+  position: absolute;
+  left: -9999px;
+  border: 10px solid black;
+}
+
+.checker {
+  position: relative;
+  margin: 20px;
+  padding: 15px 30px 15px 62px;
+  border: 3px solid #fff;
+  border-radius: 100px;
+  color: #fff;
+  background-color: #6a8494;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color .2s, box-shadow .2s;
+}
+
+.checker::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 12px;
+  bottom: 14px;
+  left: 15px;
+  width: 23px;
+  border: 3px solid #fff;
+  border-radius: 100px;
+  transition: background-color .2s;
+}
+
+.checker:hover, .putter:focus + .checker {
+  box-shadow: 0 0 20px rgba(0, 0, 0, .6);
+}
+
+.putter:checked + .checker {
+  background-color: #ab576c;
+}
+
+.putter:checked + .checker::before {
+  background-color: #fff;
+}
