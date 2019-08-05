@@ -1,0 +1,193 @@
+<html>
+<body>
+    <header>
+        <title>Organized Proposal Posts</title>
+        <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+          <!--P5 library import-->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+          <!--Links to stylesheet for CSS-->
+          <link rel="stylesheet" type="text/css" href="viewingposts_style.css">
+          
+          <!--Nice fonts-->
+          <link href="https://fonts.googleapis.com/css?family=Literata&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    </header>
+
+    <a href = "http://localhost:5000/post_view.html">
+    <div class = "back_button">
+        <div class = "div_one"><img src = "https://image.flaticon.com/icons/png/512/0/340.png" height = "80%"></div>
+        <div class = "div_two"><p>Home</p></div>
+    </div>
+    </a>
+    <section class="overlay">
+        
+               <section class = "audience_select">
+                   <h1>Search Through Proposals For:</h1>
+                    <div id = "one"><p>Undergraduate Student Proposals</p></div>
+                    <div id = "two"><p>Graduate Student Proposals</p></div>
+                    <div id = "three"><p>Faculty</p></div>
+                </section>
+    </section>
+    
+</body>
+
+<script>
+        //const fileURL = "http://localhost:5000/all";
+        //const fileURL = window.location.hostname === 'localhost' ? "http://localhost:5000/proposalObj" : "https://proposalpost-api.origamiaztec.now.sh/testoutput";
+        fileURL = "http://localhost:5000/newmethod";
+        //const fileURL = "https://proposalpost-api-f2k7b8p2m.now.sh/testoutput";
+        //const post_sect = document.querySelector('.load_research_posts');
+        const audience_select_sect = document.querySelector('.audience_select');
+        const mewsElement = document.querySelector('.overlay');
+        const back_section = document.querySelector('.back_button');
+
+        back_section.style.display = 'none';
+            
+        document.getElementById("one").addEventListener("click", function(){
+                
+                function submitWord(){
+                  
+                    console.log("clicked undergraduate students");
+                }
+
+                submitWord();
+                //var date = new Date();
+                //listMostRecentPost(3);
+                //listMostRecentPost(4);
+                layout("undergrad_select");
+                audience_select_sect.style.display = 'none';
+                back_section.style.display = '';
+                //post_sect.style.display = '';
+                
+                
+        });
+        
+        document.getElementById("two").addEventListener("click", function(){
+                
+                function submitWord(){
+                  
+                    console.log("clicked graduate students");
+                }
+
+                submitWord();
+                audience_select_sect.style.display = 'none';
+                layout("grad_select");
+                back_section.style.display = '';
+                //post_sect.style.display = '';
+        });
+
+        document.getElementById("three").addEventListener("click", function(){
+                
+                function submitWord(){
+                  
+                    console.log("clicked faculty");
+                }
+
+                submitWord();
+                audience_select_sect.style.display = 'none';
+                layout("faculty_select");
+                back_section.style.display = '';
+
+                //post_sect.style.display = '';
+                
+        });
+
+        function layout(sect){
+                fetch(fileURL)
+                        .then(response => response.json())
+                        .then(fileData => {
+                                fileData.reverse().forEach(element => {
+                                        if (element[`${sect}`] == "true"){
+                                        
+                                                const leg = document.createElement('legend');
+                                                leg.textContent = "Post";
+
+                                                const fieldset = document.createElement('fieldset');
+                                                fieldset.setAttribute("class", "load_research_posts");
+
+                                                const first_name = document.createElement('p');
+                                                const first_name_title = document.createElement('h4');
+                                                first_name_title.textContent = "First Name:";
+                                                first_name.textContent = element['first_name'];
+                                                
+                                                const last_name = document.createElement('p'); 
+                                                const last_name_title = document.createElement('h4');
+                                                last_name_title.textContent = "Last Name";
+                                                last_name.textContent = element['last_name'];
+
+                                                const email = document.createElement('p');
+                                                const email_title = document.createElement('h4');
+                                                email_title.textContent = "Email: ";
+                                                email.textContent = element['email'];
+
+                                                const summary = document.createElement('p');
+                                                const summary_title = document.createElement('h4');
+                                                summary_title.textContent = "Proposal Summary: ";
+                                                summary.textContent = element['summary'];
+
+                                                const date_updated_title = document.createElement('h4');
+                                                date_updated_title.textContent = "Date posted: ";
+                                                date_updated = document.createElement('p');
+                                                date_updated.textContent = `${element['date'].substr(0, 10)}`;
+
+                                                const link_updated_title = document.createElement('h4');
+                                                link_updated_title.textContent = "Links posted: ";
+                                                const link_updated = document.createElement('p');
+
+                                                var linkArray = new Array();
+                                                linkArray.push(element["links"].split(","));
+                                                console.log(linkArray);
+
+                                                for (i = 0; i < linkArray[0].length; i++){
+                                                        var truncate = function(text, max_chars){    
+                                                        return (text.length > max_chars) ? text.substring(0, max_chars) + '...' : text ;
+                                                        }
+                                                        const link_p = document.createElement('a');
+                                                        link_p.href = linkArray[0][i];
+                                                        const breaktag = document.createElement('br');
+                                                        link_p.textContent = truncate(linkArray[0][i], 120);     
+                                                       
+                                                        link_updated.appendChild(link_p);
+                                                        link_updated.appendChild(breaktag);    
+                                                }
+                                                
+                                                console.log(element['_id']);
+                                                console.log(element['first_name']);
+                                                console.log(element['last_name']);
+                                                console.log(element['summary']);
+                                                console.log(element['email']);
+                                                console.log(element['date']);
+
+
+                                                fieldset.appendChild(leg);
+                                                fieldset.appendChild(first_name_title);
+                                                fieldset.appendChild(first_name);
+                                                fieldset.appendChild(last_name_title);
+                                                fieldset.appendChild(last_name);
+                                                fieldset.appendChild(email_title);
+                                                fieldset.appendChild(email);
+                                                fieldset.appendChild(summary_title);
+                                                fieldset.appendChild(summary);
+                                                fieldset.appendChild(date_updated_title)
+                                                fieldset.appendChild(date_updated);
+                                                fieldset.appendChild(link_updated_title); 
+                                                fieldset.appendChild(link_updated);
+                                           
+                                                mewsElement.appendChild(fieldset);
+                                                
+
+                                        }else{
+                                                console.log(`not ${sect}`);
+                                        }
+                                        });
+                        });
+        }
+
+</script>    
+</html>
