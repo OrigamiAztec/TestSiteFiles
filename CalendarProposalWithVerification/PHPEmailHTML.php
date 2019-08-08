@@ -22,7 +22,7 @@
         require("C:/Users/origa/Documents/PHPMailer-master/src/PHPMailer.php");
         require("C:/Users/origa/Documents/PHPMailer-master/src/SMTP.php");
 
-        $connection = mysqli_connect('localhost','user2', 'thisisuser2_@7890', 'site_db') OR die (mysqli_connect_error());
+        $connection = mysqli_connect('$hose','$user', '$pass', '$databasename') OR die (mysqli_connect_error());
         
         echo '<p>'.mysqli_real_escape_string($connection, "Antonio Diaz").'</p>';
 
@@ -46,8 +46,8 @@
                 $mail->Port = 465; // or 587
                 $mail->SMTPDebug = 0; 
                 $mail->IsHTML(true);
-                $mail -> Username = 'antonio.diaz.hsa@gmail.com';
-                $mail -> Password = 'Antonio5152251551522515';
+                $mail -> Username = $username;
+                $mail -> Password = $pass;
                 //no reply @ domain name used to host 
                 $mail -> SetFrom('test@gmail.com');
                 $mail -> Subject = 'Signup | Verification';
